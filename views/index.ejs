@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    <h1>ToDo List</h1>
+    <div class="card">
+
+        <header class="header">
+            <h1>ToDo List</h1>
+            <span class="count">1/4 done</span>
+        </header>
+
+        <ul class="list">
+            <li class="item">
+                <input type="checkbox">
+                <span class="title">Buy groceries</span>
+                <span class="date">Nov 20</span>
+                <a href="#" class="icon"><i class="fa-solid fa-pen"></i></a>
+                <form action="#" method="POST">
+                    <button class="icon delete"><i class="fa-solid fa-trash"></i></button>
+                </form>
+            </li>
+
+            <li class="item">
+                <input type="checkbox">
+                <span class="title">Finish MVC course</span>
+                <span class="date">Nov 25</span>
+                <a href="#" class="icon"><i class="fa-solid fa-pen"></i></a>
+                <form action="#" method="POST">
+                    <button class="icon delete"><i class="fa-solid fa-trash"></i></button>
+                </form>
+            </li>
+
+            <li class="item completed">
+                <input type="checkbox" checked>
+                <span class="title">Call mom</span>
+                <a href="#" class="icon"><i class="fa-solid fa-pen"></i></a>
+                <form action="#" method="POST">
+                    <button class="icon delete"><i class="fa-solid fa-trash"></i></button>
+                </form>
+            </li>
+
+            <li class="item">
+                <input type="checkbox">
+                <span class="title">Read a book</span>
+                <a href="#" class="icon"><i class="fa-solid fa-pen"></i></a>
+                <form action="#" method="POST">
+                    <button class="icon delete"><i class="fa-solid fa-trash"></i></button>
+                </form>
+            </li>
+        </ul>
+
+        <form class="add-form" action="#" method="POST">
+            <input type="text" name="title" placeholder="What needs to be done?" required>
+            <input type="date" name="dueDate">
+            <button>+ Add</button>
+        </form>
+
+    </div>
+
 </body>
+
 </html>
