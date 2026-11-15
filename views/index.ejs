@@ -17,47 +17,31 @@
 
         <header class="header">
             <h1>ToDo List</h1>
-            <span class="count">1/4 done</span>
+            <span class="count">
+                <%= todos.filter(todo=> todo.completed).length %>/<%= todos.length %> done
+            </span>
         </header>
 
         <ul class="list">
-            <li class="item">
-                <input type="checkbox">
-                <span class="title">Buy groceries</span>
-                <span class="date">Nov 20</span>
-                <a href="#" class="icon"><i class="fa-solid fa-pen"></i></a>
-                <form action="#" method="POST">
-                    <button class="icon delete"><i class="fa-solid fa-trash"></i></button>
-                </form>
-            </li>
+            <% todos.forEach(todo=> { %>
+                <li class="item <%= todo.completed ? 'completed' : '' %>">
+                    <input type="checkbox" <%=todo.completed ? 'checked' : '' %>>
+                    <span class="title">
+                        <%= todo.title %>
+                    </span>
+                    <% if (todo.dueDate) { %>
+                        <span class="date">
+                            <%= todo.dueDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' }) %>
+                        </span>
+                        <% } %>
 
-            <li class="item">
-                <input type="checkbox">
-                <span class="title">Finish MVC course</span>
-                <span class="date">Nov 25</span>
-                <a href="#" class="icon"><i class="fa-solid fa-pen"></i></a>
-                <form action="#" method="POST">
-                    <button class="icon delete"><i class="fa-solid fa-trash"></i></button>
-                </form>
-            </li>
+                            <a href="#" class="icon"><i class="fa-solid fa-pen"></i></a>
+                            <form action="#" method="POST">
+                                <button class="icon delete"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                </li>
+                <% }) %>
 
-            <li class="item completed">
-                <input type="checkbox" checked>
-                <span class="title">Call mom</span>
-                <a href="#" class="icon"><i class="fa-solid fa-pen"></i></a>
-                <form action="#" method="POST">
-                    <button class="icon delete"><i class="fa-solid fa-trash"></i></button>
-                </form>
-            </li>
-
-            <li class="item">
-                <input type="checkbox">
-                <span class="title">Read a book</span>
-                <a href="#" class="icon"><i class="fa-solid fa-pen"></i></a>
-                <form action="#" method="POST">
-                    <button class="icon delete"><i class="fa-solid fa-trash"></i></button>
-                </form>
-            </li>
         </ul>
 
         <form class="add-form" action="#" method="POST">
