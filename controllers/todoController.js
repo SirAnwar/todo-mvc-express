@@ -20,4 +20,14 @@ const getEditTodo = async (req, res) => {
     res.render('edit', { todo });
 };
 
-module.exports = { getTodos, createTodo, deleteTodo, getEditTodo};
+const updateTodo = async (req, res) => {
+    await Todo.findByIdAndUpdate(req.params.id, {
+        title: req.body.title,
+        dueDate: req.body.dueDate || null,
+        completed: req.body.completed === 'on'
+    });
+    res.redirect('/');
+};
+
+
+module.exports = { getTodos, createTodo, deleteTodo, getEditTodo, updateTodo};
