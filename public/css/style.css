@@ -32,7 +32,7 @@ body {
     color: var(--text);
     margin: 0;
     padding: 16px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif;
 }
 
 /* ===== Card & header ===== */
