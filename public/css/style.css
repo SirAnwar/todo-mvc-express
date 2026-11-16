@@ -1,3 +1,24 @@
+/* ===== Colors ===== */
+:root {
+    --bg: #1C1B21;
+    --surface: #25232B;
+    --surface-hover: #2F2D36;
+    --input-bg: #2A2830;
+    --border: #3A3842;
+    --border-strong: #5A5766;
+    --checkbox-border: #6E6A78;
+    --text: #F1F0F5;
+    --muted: #8B8794;
+    --accent: #8E86AD;
+    --accent-hover: #A39CC0;
+    --teal: #6FB5A6;
+    --pill-bg: #233832;
+    --pill-text: #E6F2EE;
+    --danger: #E08A7A;
+    --radius: 18px;
+}
+
+/* ===== Base ===== */
 * {
     box-sizing: border-box;
 }
@@ -7,18 +28,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1C1B21;
-    color: #F1F0F5;
+    background-color: var(--bg);
+    color: var(--text);
     margin: 0;
     padding: 16px;
     font-family: 'Inter', sans-serif;
 }
 
+/* ===== Card & header ===== */
 .card {
     width: 100%;
     max-width: 560px;
-    background-color: #25232B;
-    border: 1px solid #3A3842;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 28px;
     padding: 32px;
 }
@@ -39,12 +61,96 @@ body {
 .count {
     font-size: 14px;
     font-weight: 600;
-    color: #E6F2EE;
-    background-color: #233832;
+    color: var(--pill-text);
+    background-color: var(--pill-bg);
     padding: 6px 14px;
     border-radius: 999px;
 }
 
+/* ===== Shared: inputs ===== */
+.input {
+    border: 2px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text);
+    background-color: var(--input-bg);
+    color-scheme: dark;
+}
+
+.input::placeholder {
+    color: var(--muted);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* ===== Shared: buttons ===== */
+.btn {
+    display: inline-block;
+    border-radius: var(--radius);
+    padding: 14px 22px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    border: none;
+    color: var(--bg);
+    background-color: var(--accent);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+    border: 2px solid var(--border-strong);
+    padding: 12px 22px;
+    color: var(--text);
+    background: none;
+}
+
+.btn-secondary:hover {
+    background-color: var(--surface-hover);
+}
+
+/* ===== Checkbox ===== */
+input[type="checkbox"] {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    flex-shrink: 0;
+    border: 2px solid var(--checkbox-border);
+    border-radius: 7px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+input[type="checkbox"]:checked::before {
+    content: '';
+    width: 5px;
+    height: 10px;
+    margin-top: -2px;
+    border: solid var(--bg);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* ===== Todo list ===== */
 .list {
     list-style: none;
     margin: 0;
@@ -56,39 +162,16 @@ body {
     align-items: center;
     gap: 12px;
     padding: 16px 0;
-    border-bottom: 1px solid #3A3842;
+    border-bottom: 1px solid var(--border);
 }
 
 .item:last-child {
     border-bottom: none;
 }
 
-input[type="checkbox"] {
-    appearance: none;
-    width: 22px;
-    height: 22px;
+.item form {
     margin: 0;
-    flex-shrink: 0;
-    border: 2px solid #6E6A78;
-    border-radius: 7px;
-    display: grid;
-    place-content: center;
-    cursor: pointer;
-}
-
-input[type="checkbox"]:checked {
-    background-color: #8E86AD;
-    border-color: #8E86AD;
-}
-
-input[type="checkbox"]:checked::before {
-    content: '';
-    width: 5px;
-    height: 10px;
-    margin-top: -2px;
-    border: solid #1C1B21;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+    display: flex;
 }
 
 .title {
@@ -97,27 +180,22 @@ input[type="checkbox"]:checked::before {
     font-weight: 400;
 }
 
+.completed .title {
+    text-decoration: line-through;
+    color: var(--muted);
+}
+
 .date {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     font-size: 14px;
     font-weight: 500;
-    color: #6FB5A6;
-    border: 1.5px solid #6FB5A6;
+    color: var(--teal);
+    border: 1.5px solid var(--teal);
     padding: 5px 12px;
     border-radius: 10px;
     white-space: nowrap;
-}
-
-.completed .title {
-    text-decoration: line-through;
-    color: #8B8794;
-}
-
-.item form {
-    margin: 0;
-    display: flex;
 }
 
 .icon {
@@ -129,39 +207,38 @@ input[type="checkbox"]:checked::before {
     border: none;
     border-radius: 8px;
     background: none;
-    color: #8B8794;
+    color: var(--muted);
     font-size: 15px;
     text-decoration: none;
     cursor: pointer;
 }
 
 .icon:hover {
-    background-color: #2F2D36;
+    background-color: var(--surface-hover);
 }
 
 .delete {
-    color: #E08A7A;
+    color: var(--danger);
 }
 
+.empty {
+    text-align: center;
+    padding: 32px 0;
+    color: var(--muted);
+}
+
+.empty i {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 28px;
+    color: var(--accent);
+}
+
+/* ===== Add form ===== */
 .add-form {
     display: flex;
     gap: 12px;
     margin-top: 24px;
-}
-
-.add-form input {
-    border: 2px solid #5A5766;
-    border-radius: 18px;
-    padding: 14px 18px;
-    font-family: inherit;
-    font-size: 15px;
-    color: #F1F0F5;
-    background-color: #2A2830;
-    color-scheme: dark;
-}
-
-.add-form input::placeholder {
-    color: #8B8794;
 }
 
 .add-form input[type="text"] {
@@ -169,26 +246,7 @@ input[type="checkbox"]:checked::before {
     min-width: 0;
 }
 
-.add-form input:focus {
-    outline: none;
-    border-color: #8E86AD;
-}
-
-.add-form button {
-    border: none;
-    border-radius: 18px;
-    padding: 14px 22px;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 600;
-    color: #1C1B21;
-    background-color: #8E86AD;
-    cursor: pointer;
-}
-
-.add-form button:hover {
-    background-color: #A39CC0;
-}
+/* ===== Edit form ===== */
 .edit-form {
     display: flex;
     flex-direction: column;
@@ -199,24 +257,7 @@ input[type="checkbox"]:checked::before {
     margin-top: 10px;
     font-size: 14px;
     font-weight: 500;
-    color: #8B8794;
-}
-
-.edit-form input[type="text"],
-.edit-form input[type="date"] {
-    border: 2px solid #5A5766;
-    border-radius: 18px;
-    padding: 14px 18px;
-    font-family: inherit;
-    font-size: 15px;
-    color: #F1F0F5;
-    background-color: #2A2830;
-    color-scheme: dark;
-}
-
-.edit-form input:focus {
-    outline: none;
-    border-color: #8E86AD;
+    color: var(--muted);
 }
 
 .edit-form .check {
@@ -225,7 +266,7 @@ input[type="checkbox"]:checked::before {
     gap: 10px;
     margin-top: 16px;
     font-size: 15px;
-    color: #F1F0F5;
+    color: var(--text);
     cursor: pointer;
 }
 
@@ -236,36 +277,7 @@ input[type="checkbox"]:checked::before {
     margin-top: 24px;
 }
 
-.actions button {
-    border: none;
-    border-radius: 18px;
-    padding: 14px 26px;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 600;
-    color: #1C1B21;
-    background-color: #8E86AD;
-    cursor: pointer;
-}
-
-.actions button:hover {
-    background-color: #A39CC0;
-}
-
-.btn-cancel {
-    border: 2px solid #5A5766;
-    border-radius: 18px;
-    padding: 12px 22px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #F1F0F5;
-    text-decoration: none;
-}
-
-.btn-cancel:hover {
-    background-color: #2F2D36;
-}
-
+/* ===== Error page ===== */
 .error-card {
     text-align: center;
 }
@@ -273,31 +285,15 @@ input[type="checkbox"]:checked::before {
 .error-card h1 {
     margin: 0;
     font-size: 64px;
-    color: #8E86AD;
+    color: var(--accent);
 }
 
 .error-card p {
     margin: 8px 0 28px;
-    color: #8B8794;
+    color: var(--muted);
 }
 
-.error-card .btn-cancel {
-    display: inline-block;
-}
-
-.empty {
-    text-align: center;
-    padding: 32px 0;
-    color: #8B8794;
-}
-
-.empty i {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 28px;
-    color: #8E86AD;
-}
-
+/* ===== Mobile ===== */
 @media (max-width: 480px) {
     .card {
         padding: 24px;

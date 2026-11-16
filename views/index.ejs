@@ -5,49 +5,46 @@
         <header class="header">
             <h1>ToDo List</h1>
             <span class="count">
-                <%= todos.filter(todo=> todo.completed).length %>/<%= todos.length %> done
+                <%= todos.filter(todo => todo.completed).length %>/<%= todos.length %> done
             </span>
         </header>
-        <% if (todos.length===0) { %>
+
+        <% if (todos.length === 0) { %>
             <p class="empty">
                 <i class="fa-regular fa-face-smile"></i>
                 No tasks yet. Add one below!
             </p>
-            <% } %>
+        <% } %>
 
-                <ul class="list">
-                    <% todos.forEach(todo=> { %>
-                        <li class="item <%= todo.completed ? 'completed' : '' %>">
-                            <form action="/todos/<%= todo._id %>/toggle?_method=PATCH" method="POST">
-                                <input type="checkbox" <%=todo.completed ? 'checked' : '' %>
-                                onchange="this.form.submit()">
-                            </form>
+        <ul class="list">
+            <% todos.forEach(todo => { %>
+                <li class="item <%= todo.completed ? 'completed' : '' %>">
+                    <form action="/todos/<%= todo._id %>/toggle?_method=PATCH" method="POST">
+                        <input type="checkbox" <%= todo.completed ? 'checked' : '' %> onchange="this.form.submit()">
+                    </form>
 
-                            <span class="title">
-                                <%= todo.title %>
-                            </span>
+                    <span class="title"><%= todo.title %></span>
 
-                            <% if (todo.dueDate) { %>
-                                <span class="date">
-                                    <i class="fa-regular fa-calendar"></i>
-                                    <%= todo.dueDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' }) %>
-                                </span>
-                                <% } %>
+                    <% if (todo.dueDate) { %>
+                        <span class="date">
+                            <i class="fa-regular fa-calendar"></i>
+                            <%= todo.dueDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) %>
+                        </span>
+                    <% } %>
 
-                                    <a href="/todos/<%= todo._id %>/edit" class="icon"><i
-                                            class="fa-regular fa-pen-to-square"></i></a>
-                                    <form action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
-                                        <button class="icon delete"><i class="fa-regular fa-trash-can"></i></button>
-                                    </form>
-                        </li>
-                        <% }) %>
-                </ul>
+                    <a href="/todos/<%= todo._id %>/edit" class="icon"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <form action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
+                        <button class="icon delete"><i class="fa-regular fa-trash-can"></i></button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
 
-                <form class="add-form" action="/todos" method="POST">
-                    <input type="text" name="title" placeholder="What needs to be done?" required>
-                    <input type="date" name="dueDate">
-                    <button>+ Add</button>
-                </form>
+        <form class="add-form" action="/todos" method="POST">
+            <input type="text" name="title" class="input" placeholder="What needs to be done?" required>
+            <input type="date" name="dueDate" class="input">
+            <button class="btn btn-primary">+ Add</button>
+        </form>
 
     </div>
 
