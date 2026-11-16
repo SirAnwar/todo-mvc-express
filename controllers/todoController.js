@@ -17,8 +17,15 @@ const deleteTodo = async (req, res) => {
 
 const getEditTodo = async (req, res) => {
     const todo = await Todo.findById(req.params.id);
+    if (!todo) {
+        return res.status(404).render('error', {
+            status: 404,
+            message: 'Todo not found'
+        });
+    }
     res.render('edit', { todo });
 };
+
 
 const updateTodo = async (req, res) => {
     await Todo.findByIdAndUpdate(req.params.id, {
@@ -31,6 +38,14 @@ const updateTodo = async (req, res) => {
 
 const toggleTodo = async (req, res) => {
     const todo = await Todo.findById(req.params.id);
+
+    if (!todo) {
+        return res.status(404).render('error', {
+            status: 404,
+            message: 'Todo not found'
+        });
+    }
+
     todo.completed = !todo.completed;
     await todo.save();
     res.redirect('/');

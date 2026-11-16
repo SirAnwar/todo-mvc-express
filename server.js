@@ -17,6 +17,30 @@ app.use(methodOverride('_method'));
 
 app.use('/', todoRoutes);
 
+app.use((req, res) => {
+    res.status(404).render('error', {
+        status: 404,
+        message: 'Page not found'
+    });
+});
+
+app.use((err, req, res, next) => {
+    console.error(err);
+
+    if (err.name === 'CastError') {
+        return res.status(404).render('error', {
+            status: 404,
+            message: 'Todo not found'
+        });
+    }
+
+    res.status(500).render('error', {
+        status: 500,
+        message: 'Something went wrong'
+    });
+});
+
+
 app.listen(PORT, () => {
     console.log(`server on port ${PORT}`);
 });

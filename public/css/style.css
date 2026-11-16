@@ -266,6 +266,24 @@ input[type="checkbox"]:checked::before {
     background-color: #2F2D36;
 }
 
+.error-card {
+    text-align: center;
+}
+
+.error-card h1 {
+    margin: 0;
+    font-size: 64px;
+    color: #8E86AD;
+}
+
+.error-card p {
+    margin: 8px 0 28px;
+    color: #8B8794;
+}
+
+.error-card .btn-cancel {
+    display: inline-block;
+}
 
 @media (max-width: 480px) {
     .card {
