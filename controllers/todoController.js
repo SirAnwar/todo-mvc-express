@@ -5,4 +5,9 @@ const getTodos = async (req, res) => {
     res.render('index', { todos });
 };
 
-module.exports = { getTodos };
+const createTodo = async (req, res) => {
+    await Todo.create(req.body);
+    res.redirect('/');
+};
+
+module.exports = { getTodos, createTodo};
