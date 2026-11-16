@@ -285,6 +285,19 @@ input[type="checkbox"]:checked::before {
     display: inline-block;
 }
 
+.empty {
+    text-align: center;
+    padding: 32px 0;
+    color: #8B8794;
+}
+
+.empty i {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 28px;
+    color: #8E86AD;
+}
+
 @media (max-width: 480px) {
     .card {
         padding: 24px;
