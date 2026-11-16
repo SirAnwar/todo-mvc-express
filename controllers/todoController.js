@@ -10,4 +10,9 @@ const createTodo = async (req, res) => {
     res.redirect('/');
 };
 
-module.exports = { getTodos, createTodo};
+const deleteTodo = async (req, res) => {
+    await Todo.findByIdAndDelete(req.params.id);
+    res.redirect('/');
+};
+
+module.exports = { getTodos, createTodo, deleteTodo};

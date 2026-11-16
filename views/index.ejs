@@ -36,7 +36,7 @@
                     <% } %>
 
                     <a href="#" class="icon"><i class="fa-regular fa-pen-to-square"></i></a>
-                    <form action="#" method="POST">
+                    <form action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
                         <button class="icon delete"><i class="fa-regular fa-trash-can"></i></button>
                     </form>
                 </li>
