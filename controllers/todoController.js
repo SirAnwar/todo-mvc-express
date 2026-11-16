@@ -15,4 +15,9 @@ const deleteTodo = async (req, res) => {
     res.redirect('/');
 };
 
-module.exports = { getTodos, createTodo, deleteTodo};
+const getEditTodo = async (req, res) => {
+    const todo = await Todo.findById(req.params.id);
+    res.render('edit', { todo });
+};
+
+module.exports = { getTodos, createTodo, deleteTodo, getEditTodo};
