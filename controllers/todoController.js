@@ -29,5 +29,11 @@ const updateTodo = async (req, res) => {
     res.redirect('/');
 };
 
+const toggleTodo = async (req, res) => {
+    const todo = await Todo.findById(req.params.id);
+    todo.completed = !todo.completed;
+    await todo.save();
+    res.redirect('/');
+};
 
-module.exports = { getTodos, createTodo, deleteTodo, getEditTodo, updateTodo};
+module.exports = { getTodos, createTodo, deleteTodo, getEditTodo, updateTodo, toggleTodo};
