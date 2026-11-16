@@ -23,25 +23,24 @@
         </header>
 
         <ul class="list">
-            <% todos.forEach(todo=> { %>
+            <% todos.forEach(todo => { %>
                 <li class="item <%= todo.completed ? 'completed' : '' %>">
-                    <input type="checkbox" <%=todo.completed ? 'checked' : '' %>>
-                    <span class="title">
-                        <%= todo.title %>
-                    </span>
+                    <input type="checkbox" <%= todo.completed ? 'checked' : '' %>>
+                    <span class="title"><%= todo.title %></span>
+
                     <% if (todo.dueDate) { %>
                         <span class="date">
-                            <%= todo.dueDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' }) %>
+                            <i class="fa-regular fa-calendar"></i>
+                            <%= todo.dueDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) %>
                         </span>
-                        <% } %>
+                    <% } %>
 
-                            <a href="#" class="icon"><i class="fa-solid fa-pen"></i></a>
-                            <form action="#" method="POST">
-                                <button class="icon delete"><i class="fa-solid fa-trash"></i></button>
-                            </form>
+                    <a href="#" class="icon"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <form action="#" method="POST">
+                        <button class="icon delete"><i class="fa-regular fa-trash-can"></i></button>
+                    </form>
                 </li>
-                <% }) %>
-
+            <% }) %>
         </ul>
 
         <form class="add-form" action="#" method="POST">

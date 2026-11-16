@@ -7,8 +7,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #D9E1EA;
-    color: #1F2A3D;
+    background-color: #1C1B21;
+    color: #F1F0F5;
     margin: 0;
     padding: 16px;
     font-family: 'Inter', sans-serif;
@@ -17,32 +17,31 @@ body {
 .card {
     width: 100%;
     max-width: 560px;
-    background-color: #FFFAFA;
-    border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 12px 40px rgba(15, 30, 54, 0.10);
+    background-color: #25232B;
+    border: 1px solid #3A3842;
+    border-radius: 28px;
+    padding: 32px;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 18px;
-    margin-bottom: 18px;
-    border-bottom: 1px solid #ECEEF2;
+    margin-bottom: 12px;
 }
 
 .header h1 {
     margin: 0;
-    font-size: 22px;
+    font-size: 36px;
     font-weight: 700;
 }
 
 .count {
-    font-size: 13px;
-    color: #71717A;
-    background-color: #F2F3F6;
-    padding: 4px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #E6F2EE;
+    background-color: #233832;
+    padding: 6px 14px;
     border-radius: 999px;
 }
 
@@ -50,44 +49,70 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 .item {
     display: flex;
     align-items: center;
     gap: 12px;
-    background-color: #F2F3F6;
-    border-radius: 12px;
-    padding: 14px 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #3A3842;
+}
+
+.item:last-child {
+    border-bottom: none;
 }
 
 .item input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    accent-color: #436B95;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    flex-shrink: 0;
+    border: 2px solid #6E6A78;
+    border-radius: 7px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+.item input[type="checkbox"]:checked {
+    background-color: #8E86AD;
+    border-color: #8E86AD;
+}
+
+.item input[type="checkbox"]:checked::before {
+    content: '';
+    width: 5px;
+    height: 10px;
+    margin-top: -2px;
+    border: solid #1C1B21;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }
 
 .title {
     flex: 1;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 17px;
+    font-weight: 400;
 }
 
 .date {
-    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
     font-weight: 500;
-    color: #436B95;
-    background-color: #E3EBF4;
-    padding: 4px 10px;
-    border-radius: 999px;
+    color: #6FB5A6;
+    border: 1.5px solid #6FB5A6;
+    padding: 5px 12px;
+    border-radius: 10px;
+    white-space: nowrap;
 }
 
 .completed .title {
     text-decoration: line-through;
-    color: #A1A1AA;
+    color: #8B8794;
 }
 
 .item form {
@@ -96,67 +121,93 @@ body {
 }
 
 .icon {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
     border-radius: 8px;
     background: none;
-    color: #A1A1AA;
+    color: #8B8794;
     font-size: 15px;
     text-decoration: none;
     cursor: pointer;
 }
 
 .icon:hover {
-    background-color: #E4E7EC;
+    background-color: #2F2D36;
 }
 
 .delete {
-    color: #CC3333;
+    color: #E08A7A;
 }
 
 .add-form {
     display: flex;
-    gap: 8px;
-    margin-top: 20px;
-    padding-top: 18px;
-    border-top: 1px solid #ECEEF2;
+    gap: 12px;
+    margin-top: 24px;
 }
 
 .add-form input {
-    border: 1px solid #E4E4E7;
-    border-radius: 10px;
-    padding: 11px 14px;
+    border: 2px solid #5A5766;
+    border-radius: 18px;
+    padding: 14px 18px;
     font-family: inherit;
-    font-size: 14px;
-    color: #1F2A3D;
-    background-color: #FFFFFF;
+    font-size: 15px;
+    color: #F1F0F5;
+    background-color: #2A2830;
+    color-scheme: dark;
+}
+
+.add-form input::placeholder {
+    color: #8B8794;
 }
 
 .add-form input[type="text"] {
     flex: 1;
+    min-width: 0;
 }
 
 .add-form input:focus {
     outline: none;
-    border-color: #436B95;
+    border-color: #8E86AD;
 }
 
 .add-form button {
     border: none;
-    border-radius: 10px;
-    padding: 11px 18px;
+    border-radius: 18px;
+    padding: 14px 22px;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
-    color: #FFFFFF;
-    background-color: #0F1E36;
+    color: #1C1B21;
+    background-color: #8E86AD;
     cursor: pointer;
 }
 
 .add-form button:hover {
-    background-color: #1F2A3D;
+    background-color: #A39CC0;
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 24px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .add-form {
+        flex-wrap: wrap;
+    }
+
+    .add-form input[type="text"] {
+        flex-basis: 100%;
+    }
+
+    .add-form input[type="date"] {
+        flex: 1;
+    }
 }
